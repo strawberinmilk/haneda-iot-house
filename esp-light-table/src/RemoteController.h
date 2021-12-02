@@ -1,7 +1,7 @@
 // Copyright [2021] <rin;>
 
-#ifndef ESP_LIGHT_SRC_REMOTECONTROLLER_H_
-#define ESP_LIGHT_SRC_REMOTECONTROLLER_H_
+#ifndef ESP_LIGHT_TABLE_SRC_REMOTECONTROLLER_H_
+#define ESP_LIGHT_TABLE_SRC_REMOTECONTROLLER_H_
 
 #include <assert.h>
 #include <IRrecv.h>
@@ -11,33 +11,21 @@
 #include <IRutils.h>
 #include <IRsend.h>
 
-  enum livingLight {
-    nightLamp = 0,
-    on,
-    down,
-    up,
-    off,
-    sleepTimer,
-    like = 6,
-  };
-
-  enum fcLightBulb {
-    fcOn = 7,
-    fcoff,
-    fcWhite,
-    fcRed,
-    fcGreen,
-    fcBlue = 12
-  };
-
 class RemoteController{
   public:
     RemoteController(void);
     void init(void);
     void irSend(int);
-    void debug(void);
+    void sendDebug(void);
     void signalGet(void);
-    struct IrData;
+    void irSendStr(String);
+    int irDataLength;
+    struct {
+      String name;
+      decode_type_t decode_type;
+      int value;
+      int bits;
+      } irData[13];
 
   private:
     decode_results results;
@@ -57,4 +45,4 @@ class RemoteController{
     uint16_t kIrLed;
 };
 
-#endif  // ESP_LIGHT_SRC_REMOTECONTROLLER_H_
+#endif  // ESP_LIGHT_TABLE_SRC_REMOTECONTROLLER_H_
