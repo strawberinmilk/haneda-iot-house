@@ -3,7 +3,7 @@
 #include <Arduino.h>
 #include "RemoteController.h"
 
-const uint16_t kIrLed = 18;
+const uint16_t kIrLed = 13;
 const uint16_t kRecvPin = 19;
 
 int irDataLengthGlobal = 13;
