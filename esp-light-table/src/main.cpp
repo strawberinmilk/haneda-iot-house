@@ -24,6 +24,9 @@ String html = R"(
         <div class="button"><a href=/ir/lvoff>明るさdown</a></div>
         <div class="button"><a href=/ir/lvsleep>おやすみ</a></div>
         <div class="button"><a href=/ir/lvlike>お好み</a></div>
+        <p></p>
+        <div class="button"><a href=/desk/on>デスクオン</a></div>
+        <div class="button"><a href=/desk/off>デスクオフ</a></div>
       </body>
       </html>
       )";
@@ -37,13 +40,14 @@ int setUpI = 0;
 void setup() {
   Serial.begin(115200);
   Serial.println("boot");
+  pinMode(14, OUTPUT);
 
   remoteController.init();
 
   String strSsid = mySSID;
   String strPass = myPASS;
-  char charSsid[strSsid.length()+1];
-  char charPass[strPass.length()+1];
+  char charSsid[strSsid.length()+1];  // NOLINT
+  char charPass[strPass.length()+1];  // NOLINT
   strSsid.toCharArray(charSsid, strSsid.length()+1);
   strPass.toCharArray(charPass, strPass.length()+1);
   httpServer.init(charSsid, charPass);
@@ -60,6 +64,17 @@ void setup() {
       remoteController.irSendStr(command);
     });
   }
+
+  httpServer.addTask("/desk/on", [](){
+    HttpServer::AccessReport res = httpServer.resDecode();
+    httpServer.send(200, "text/html; charset=utf-8", html);
+    digitalWrite(14, true);
+  });
+  httpServer.addTask("/desk/off", [](){
+    HttpServer::AccessReport res = httpServer.resDecode();
+    httpServer.send(200, "text/html; charset=utf-8", html);
+    digitalWrite(14, false);
+  });
 }
 
 void loop() {
