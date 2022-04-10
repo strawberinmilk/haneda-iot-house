@@ -16,9 +16,9 @@ struct {
   } irDataGlobal[13] {
   {"lvnightlamp", decode_type_t(NEC), static_cast<int>(0x41B63DC2), static_cast<int>(32)},  // NOLINT
   {"lvon", decode_type_t(NEC), static_cast<int>(0x41B6659A), static_cast<int>(32)},  // NOLINT
-  {"lvoff", decode_type_t(NEC), static_cast<int>(0x41B6DD22), static_cast<int>(32)},  // NOLINT
+  {"lvoff", decode_type_t(NEC), static_cast<int>(0x41B67D82), static_cast<int>(32)},  // NOLINT
   {"lvup", decode_type_t(NEC), static_cast<int>(0x41B65DA2), static_cast<int>(32)},  // NOLINT
-  {"lvdown", decode_type_t(NEC), static_cast<int>(0x41B67D82), static_cast<int>(32)},  // NOLINT
+  {"lvdown", decode_type_t(NEC), static_cast<int>(0x41B6DD22), static_cast<int>(32)},  // NOLINT
   {"lvsleep", decode_type_t(NEC), static_cast<int>(0x41B6F50A), static_cast<int>(32)},  // NOLINT
   {"lvlike", decode_type_t(NEC), static_cast<int>(0x41B645BA), static_cast<int>(32)},  // NOLINT
   {"fcon", decode_type_t(NEC), static_cast<int>(0xF7C03F), static_cast<int>(32)},  // NOLINT
