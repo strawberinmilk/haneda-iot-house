@@ -19,9 +19,9 @@ String html = R"(
       <body>
         <div class="button"><a href=/ir/lvnightlamp>常夜灯</a></div>
         <div class="button"><a href=/ir/lvon>ON</a></div>
-        <div class="button"><a href=/ir/lvdown>OFF</a></div>
+        <div class="button"><a href=/ir/lvoff>OFF</a></div>
         <div class="button"><a href=/ir/lvup>明るさup</a></div>
-        <div class="button"><a href=/ir/lvoff>明るさdown</a></div>
+        <div class="button"><a href=/ir/lvdown>明るさdown</a></div>
         <div class="button"><a href=/ir/lvsleep>おやすみ</a></div>
         <div class="button"><a href=/ir/lvlike>お好み</a></div>
         <p></p>
