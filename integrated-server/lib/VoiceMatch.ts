@@ -11,20 +11,23 @@ const actionList = [
 ];
 
 export class VoiceMatch {
-  private flag = '';
+  private sentList: string[] = [];
+
   public async getData (data:{status:string, text:string}) {
     if (data.status.match(/(end)|(error)|(reset)/)) {
-      this.flag = '';
+      this.sentList = [];
     }
-    const url = this.match(data.text);
-    if (url === '') return;
-    if (this.flag != url) {
-      await axios.get(`${process.env.ESP_URL}${url}`);
-      this.flag = url;
+    const urlList: string[] = this.match(data.text);
+    for (const url of urlList) {
+      if (this.sentList.indexOf(url) === -1) {
+        await axios.get(`${process.env.ESP_URL}${url}`);
+        this.sentList.push(url);
+      }
     }
   }
 
-  private match (text: string): string {
+  private match (text: string): string[] {
+    const actionUrlList: string[] = []
     for (const action of actionList) {
       let actionHitFlag = true;
       for (const phrase of action.text) {
@@ -34,9 +37,9 @@ export class VoiceMatch {
         }
       }
       if (actionHitFlag) {
-        return action.url;
+        actionUrlList.push(action.url)
       }
     }
-    return '';
+    return actionUrlList;
   }
 }
