@@ -4,8 +4,11 @@ import axios from 'axios';
 const actionList = [
   {text: ['電気', 'つけて'], url: '/ir/lvon'},
   {text: ['電気', '消して'], url: '/ir/lvoff'},
+  {text: ['電気', '明るくして'], url: '/ir/lvup'},
+  {text: ['電気', '暗くして'], url: '/ir/lvdown'},
+  {text: ['常夜灯', 'つけて'], url: '/ir/lvnightlamp'},
   {text: ['机', 'つけて'], url: '/desk/on'},
-  {text: ['机', '消して'], url: '/desk/off'},
+  {text: ['机', 'けして'], url: '/desk/on'},
   {text: ['デスク', 'つけて'], url: '/desk/on'},
   {text: ['デスク', '消して'], url: '/desk/off'},
 ];
